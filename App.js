@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Header from "./src/components/Header";
+import Footer from "./src/components/Footer";
+import Body from "./src/components/Body";
 
-const heading = React.createElement("div", { id: "main" }, [
-  React.createElement("h1", { id: "child" }, "I am h1 tag"),
-  React.createElement("h2", { id: "child" }, "I am h2 tag"),
-]);
-console.log("heading", heading);
-const jsxHeading = <h1>jsx heading</h1>;
-console.log("jsxHeading", jsxHeading);
+const App = () => {
+  return (
+    <>
+      <Header />
+      <Body />
+      <Footer />
+    </>
+  );
+};
 const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
 
-root.render(jsxHeading);
+// swiggy API: https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.50255414116582&lng=78.39727610349655&restaurantId=56096&submitAction=ENTER
