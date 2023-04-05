@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurentCard from "./RestaurentCard";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [searchInputText, setSearchInputText] = useState("");
@@ -40,14 +41,19 @@ const Body = () => {
           Search
         </button>
       </div>
-      <section className="card-list">
-        {filterRestaurentList.map((restaurent) => {
-          return <RestaurentCard {...restaurent.data} />;
-        })}
-      </section>
+      {filterRestaurentList.length == 0 ? (
+        <Shimmer /> //<h1>Loading .........</h1>
+      ) : (
+        <section className="card-list">
+          {filterRestaurentList.map((restaurent) => {
+            return <RestaurentCard {...restaurent.data} />;
+          })}
+        </section>
+      )}
     </>
   );
 };
 export default Body;
 
 //https://github.com/kavigithub/React-Assignment-Proj
+// https://github.com/Ankush-Ladani/Namaste-Web-Series
