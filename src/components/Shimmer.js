@@ -7,6 +7,8 @@ const Shimmer = () => {
           return (
             <section className="shine-div">
               <div className="shine shine-photo"></div>
+              <div className="shine shine-photo"></div>
+              <div className="shine shine-photo"></div>
             </section>
           );
         })}
