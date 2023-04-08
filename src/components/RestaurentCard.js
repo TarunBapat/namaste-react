@@ -7,6 +7,7 @@ const RestaurentCard = ({
   deliveryTime,
   lastMileTravelString,
   title,
+  id,
 }) => {
   return (
     <div className="card">

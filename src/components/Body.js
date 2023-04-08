@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import RestaurentCard from "./RestaurentCard";
 import Shimmer from "./Shimmer";
 
@@ -18,8 +19,10 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.1754547&lng=75.7981902&page_type=DESKTOP_WEB_LISTING"
     );
     const data = await resp.json();
-    setAllRestaurent(data.data.cards[2].data.data.cards);
-    setFilterRestaurentList(data.data.cards[2].data.data.cards);
+    console.log("data", data);
+    console.log("all restaurants", data?.data?.cards[0].data.data.cards);
+    setAllRestaurent(data.data.cards[0].data.data.cards);
+    setFilterRestaurentList(data?.data?.cards[0]?.data?.data?.cards);
   }
   useEffect(() => {
     getRestaurentData();
@@ -45,9 +48,18 @@ const Body = () => {
         <Shimmer /> //<h1>Loading .........</h1>
       ) : (
         <section className="card-list">
-          {filterRestaurentList.map((restaurent) => {
-            return <RestaurentCard {...restaurent.data} />;
-          })}
+          <div className="restaurants-list">
+            {filterRestaurentList.map((restaurent) => {
+              return (
+                <Link
+                  className="restaurant-card"
+                  to={`/restaurant/${restaurent.data.id}`}
+                >
+                  <RestaurentCard {...restaurent.data} />
+                </Link>
+              );
+            })}
+          </div>
         </section>
       )}
     </>
@@ -57,3 +69,4 @@ export default Body;
 
 //https://github.com/kavigithub/React-Assignment-Proj
 // https://github.com/Ankush-Ladani/Namaste-Web-Series
+// https://github.com/Learn-React-With-Harshi/chapter-12-lets-build-our-store/blob/main/index.css

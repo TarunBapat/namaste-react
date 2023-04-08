@@ -4,6 +4,7 @@ import Title from "./Title";
 import userLogin from "../../Assets/images/in-user-account.png";
 import userLogout from "../../Assets/images/out-user-account.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -13,10 +14,14 @@ const Header = () => {
       <div className="nav-bar">
         <ul>
           <li>
-            <a></a>Home
+            <Link to="/">Home</Link>
           </li>
-          <li>About Us</li>
-          <li>Content us</li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/">Contact us</Link>
+          </li>
           {/* <li><img src={cartIcon} alt="cart" style={{width:30}}/></li> */}
           <li>
             {/*  {
