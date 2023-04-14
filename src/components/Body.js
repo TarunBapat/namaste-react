@@ -20,26 +20,26 @@ const Body = () => {
     );
     const data = await resp.json();
     console.log("data", data);
-    console.log("all restaurants", data?.data?.cards[0].data.data.cards);
-    setAllRestaurent(data.data.cards[0].data.data.cards);
-    setFilterRestaurentList(data?.data?.cards[0]?.data?.data?.cards);
+    console.log("all restaurants", data?.data?.cards[2].data.data.cards);
+    setAllRestaurent(data.data.cards[2].data.data.cards);
+    setFilterRestaurentList(data?.data?.cards[2]?.data?.data?.cards);
   }
   useEffect(() => {
     getRestaurentData();
   }, []);
   return (
     <>
-      <div className="search-container">
+      <div className="flex m-1">
         <input
           type="text"
           value={searchInputText}
           onChange={(e) => setSearchInputText(e.target.value)}
-          className={`search-input`}
+          className="outline-none text-base mob:text-xs p-[5px] basis-[350px] mob:basis-[270px] h-[30px] rounded-md ring-1 ring-gray bg-gray"
         />
         <button
           type="button"
           onClick={() => filterData(searchInputText, allRestaurent)}
-          className={`search-btn`}
+          className="btn btn--primary basis-[60px] mob:basis-[50px] mob:text-xs"
         >
           Search
         </button>
@@ -70,3 +70,4 @@ export default Body;
 //https://github.com/kavigithub/React-Assignment-Proj
 // https://github.com/Ankush-Ladani/Namaste-Web-Series
 // https://github.com/Learn-React-With-Harshi/chapter-12-lets-build-our-store/blob/main/index.css
+// navigator.onLine
