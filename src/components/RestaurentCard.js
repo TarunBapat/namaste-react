@@ -10,7 +10,7 @@ const RestaurentCard = ({
   id,
 }) => {
   return (
-    <div className="card">
+    <div className="w-56">
       <img src={IMG_CDN_URL + cloudinaryImageId} />
       <h4>{name}</h4>
       <h6>{title}</h6>

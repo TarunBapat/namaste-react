@@ -3,8 +3,9 @@ import Title from "./Title";
 // import cartIcon from "../img/cart-icon.png";
 import userLogin from "../../Assets/images/in-user-account.png";
 import userLogout from "../../Assets/images/out-user-account.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnline from "../../utils/useOnline";
 
 const navLinks = [
   { path: "/", title: "Home" },
@@ -14,9 +15,12 @@ const navLinks = [
 ];
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
+  const online = useOnline();
+
   return (
     <header className="flex bg-green-600 justify-between">
       <Title imgPath={reactLogo} />
+      {online ? "online" : "offline"}
       <div className="flex">
         <ul className="flex items-center">
           {navLinks.map((item, index) => {

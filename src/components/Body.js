@@ -47,8 +47,8 @@ const Body = () => {
       {filterRestaurentList.length == 0 ? (
         <Shimmer /> //<h1>Loading .........</h1>
       ) : (
-        <section className="card-list">
-          <div className="restaurants-list">
+        <section className="flex flex-wrap justify-between p-8">
+          <div className="flex flex-wrap justify-between">
             {filterRestaurentList.map((restaurent) => {
               return (
                 <Link
@@ -67,7 +67,7 @@ const Body = () => {
 };
 export default Body;
 
-//https://github.com/kavigithub/React-Assignment-Proj
+// https://github.com/kavigithub/React-Assignment-Proj
 // https://github.com/Ankush-Ladani/Namaste-Web-Series
 // https://github.com/Learn-React-With-Harshi/chapter-12-lets-build-our-store/blob/main/index.css
 // navigator.onLine
