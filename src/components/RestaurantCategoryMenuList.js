@@ -1,7 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../utils/CartSlice";
 
 const RestaurantCategoryMenuList = ({ title, itemCards }) => {
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  const addItemToCart = (info) => {
+    // console.log("info", info);
+    dispatch(addItem(info));
+  };
   return (
     <div className="mb-2 mt-2">
       <p
@@ -33,7 +40,10 @@ const RestaurantCategoryMenuList = ({ title, itemCards }) => {
                       src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${item.card.info.imageId}`}
                     />
                   )}
-                  <button className="btn btn--primary w-[118px] h-[34px] mt-2.5">
+                  <button
+                    className="btn btn--primary w-[118px] h-[34px] mt-2.5"
+                    onClick={() => addItemToCart(item.card.info)}
+                  >
                     {" "}
                     ADD +
                   </button>

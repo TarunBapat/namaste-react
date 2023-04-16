@@ -5,6 +5,7 @@ import Footer from "./src/components/Footer";
 import Body from "./src/components/Body";
 import AboutUs from "./src/components/AboutUs";
 import Error from "./src/components/Error";
+import Cart from "./src/components/Cart";
 import {
   createBrowserRouter,
   router,
@@ -13,13 +14,17 @@ import {
 } from "react-router-dom";
 import RestaurantMenu from "./src/components/RestaurantMenu";
 import Instamart from "./src/components/Instamart";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 const App = () => {
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <Provider store={store}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </Provider>
     </>
   );
 };
@@ -44,6 +49,10 @@ const appRoutes = createBrowserRouter([
       {
         path: "/instamart",
         element: <Instamart />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

@@ -6,17 +6,20 @@ import userLogout from "../../Assets/images/out-user-account.png";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../../utils/useOnline";
+import { useSelector } from "react-redux";
 
 const navLinks = [
   { path: "/", title: "Home" },
   { path: "/about", title: "About Us" },
   { path: "/instamart", title: "Instamart" },
   { path: "/help", title: "Help" },
+  { path: "/cart", title: "Cart" },
 ];
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
   const online = useOnline();
-
+  const cartItems = useSelector((store) => store?.cart?.items);
+  console.log("cartItems", cartItems);
   return (
     <header className="flex bg-green-600 justify-between">
       <Title imgPath={reactLogo} />
