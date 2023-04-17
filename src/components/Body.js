@@ -67,7 +67,10 @@ const Body = () => {
 };
 export default Body;
 
+// Refrences:
 // https://github.com/kavigithub/React-Assignment-Proj
 // https://github.com/Ankush-Ladani/Namaste-Web-Series
 // https://github.com/Learn-React-With-Harshi/chapter-12-lets-build-our-store/blob/main/index.css
 // navigator.onLine
+// https://www.youtube.com/watch?v=Dbq6yr9XKX8
+// https://blog.logrocket.com/user-authentication-firebase-react-apps/
