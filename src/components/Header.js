@@ -14,6 +14,7 @@ const navLinks = [
   { path: "/instamart", title: "Instamart" },
   { path: "/help", title: "Help" },
   { path: "/cart", title: "Cart" },
+  { path: "/signin", title: "SignIn" },
 ];
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);

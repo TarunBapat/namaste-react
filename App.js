@@ -16,7 +16,8 @@ import RestaurantMenu from "./src/components/RestaurantMenu";
 import Instamart from "./src/components/Instamart";
 import { Provider } from "react-redux";
 import store from "./utils/store";
-
+import SignIn from "./src/components/SignIn";
+import Register from "./src/components/Register";
 const App = () => {
   return (
     <>
@@ -53,6 +54,14 @@ const appRoutes = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
