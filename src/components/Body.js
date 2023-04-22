@@ -74,3 +74,4 @@ export default Body;
 // navigator.onLine
 // https://www.youtube.com/watch?v=Dbq6yr9XKX8
 // https://blog.logrocket.com/user-authentication-firebase-react-apps/
+// https://console.firebase.google.com/project/food-order-signin/authentication/settings

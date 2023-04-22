@@ -1,14 +1,24 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../utils/CartSlice";
+import { useSelector } from "react-redux";
+import { addItem, removeItem } from "../../utils/CartSlice";
 
 const RestaurantCategoryMenuList = ({ title, itemCards }) => {
   const [show, setShow] = useState(false);
+  const [individualItemQty, setIndividualItemQty] = useState(0);
+  const cartItems = useSelector((store) => store?.cart?.items);
   const dispatch = useDispatch();
   const addItemToCart = (info) => {
     // console.log("info", info);
     dispatch(addItem(info));
+    setIndividualItemQty(individualItemQty + 1);
   };
+  const removeFromCart = (info) => {
+    dispatch(removeItem(info));
+    let updatedCount = individualItemQty > 0 ? individualItemQty - 1 : 0;
+    setIndividualItemQty(updatedCount);
+  };
+
   return (
     <div className="mb-2 mt-2">
       <p
@@ -42,10 +52,20 @@ const RestaurantCategoryMenuList = ({ title, itemCards }) => {
                   )}
                   <button
                     className="btn btn--primary w-[118px] h-[34px] mt-2.5"
-                    onClick={() => addItemToCart(item.card.info)}
+                    onClick={() => {
+                      addItemToCart(item.card.info);
+                    }}
                   >
                     {" "}
                     ADD +
+                  </button>
+                  {individualItemQty}
+                  <button
+                    onClick={() => {
+                      removeFromCart(item.card.info.id);
+                    }}
+                  >
+                    Remove -
                   </button>
                 </div>
               </div>

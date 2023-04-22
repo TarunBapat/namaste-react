@@ -18,6 +18,8 @@ import { Provider } from "react-redux";
 import store from "./utils/store";
 import SignIn from "./src/components/SignIn";
 import Register from "./src/components/Register";
+import Reset from "./src/components/Reset";
+import Help from "./src/components/Help";
 const App = () => {
   return (
     <>
@@ -56,12 +58,20 @@ const appRoutes = createBrowserRouter([
         element: <Cart />,
       },
       {
+        path: "/help",
+        element: <Help />,
+      },
+      {
         path: "/signin",
         element: <SignIn />,
       },
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/reset",
+        element: <Reset />,
       },
     ],
   },
