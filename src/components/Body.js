@@ -29,11 +29,12 @@ const Body = () => {
   }, []);
   return (
     <>
-      <div className="flex m-1">
+      <div className="flex justify-evenly max-w-[500px] mob:min-w-[375px] h-[100px] mob:h-[50px] items-center m-auto">
         <input
           type="text"
           value={searchInputText}
           onChange={(e) => setSearchInputText(e.target.value)}
+          placeholder=" Search for restaurant"
           className="outline-none text-base mob:text-xs p-[5px] basis-[350px] mob:basis-[270px] h-[30px] rounded-md ring-1 ring-gray bg-gray"
         />
         <button
