@@ -15,7 +15,7 @@ const RestaurentCard = ({
       <h4>{name}</h4>
       <h6>{title}</h6>
       <div
-        class="flex items-center h-5 w-11 gap-1 py-0 px-1"
+        className="flex items-center h-5 w-11 gap-1 py-0 px-1"
         style={{
           backgroundColor: "rgb(72, 196, 121)",
           color: "rgb(255, 255, 255)",

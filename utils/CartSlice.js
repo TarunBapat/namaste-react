@@ -20,8 +20,12 @@ const CartSlice = createSlice({
         state.items[existingItemIndex].qty++;
         state.items[existingItemIndex].price +=
           state.items[existingItemIndex].price;
+        state.totalPrice +=
+          state?.items[existingItemIndex]?.qty *
+          state?.items[existingItemIndex]?.price;
       } else {
         state.items.push(itemWithQuantity);
+        state.totalPrice += state?.items?.qty * state?.items?.price;
       }
     },
     clearCart(state) {
@@ -34,8 +38,12 @@ const CartSlice = createSlice({
       );
       if (state.items[existingItemIndex].qty > 1) {
         state.items[existingItemIndex].qty--;
+        state.totalPrice -=
+          state?.items[existingItemIndex]?.qty *
+          state?.items[existingItemIndex]?.price;
       } else {
         state.items.splice(existingItemIndex, 1);
+        state.totalPrice -= state?.items?.qty * state?.items?.price;
       }
     },
   },

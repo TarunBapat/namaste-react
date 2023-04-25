@@ -7,7 +7,7 @@ const RestaurantCategoryMenuList = ({ title, itemCards }) => {
   return (
     <div className="mb-2 mt-2">
       <p
-        class="bg-green-400 border-black text-white p-2 rounded-t-md"
+        className="bg-green-400 border-black text-white p-2 rounded-t-md"
         onClick={() => setShow(!show)}
       >
         {title}
