@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -40,8 +41,8 @@ const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
-    console.log("response after login", res);
-    console.log("user after login", user);
+    // console.log("response after login", res);
+    // console.log("user after login", user);
     const q = query(collection(db, "users"), where("uid", "==", user.uid));
     const docs = await getDocs(q);
     if (docs.docs.length === 0) {
@@ -94,6 +95,10 @@ const logout = () => {
   signOut(auth);
   //   navigator("/instamart");
 };
+
+// const onAuthStateChange = () => {
+//   return onAuthStateChanged(auth, (currentUser) => {});
+// };
 export {
   auth,
   db,
@@ -102,4 +107,5 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
+  onAuthStateChanged,
 };

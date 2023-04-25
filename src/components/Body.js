@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
+// import { useSelector } from "react-redux";
+import { auth, onAuthStateChanged } from "../../utils/firebase";
 import { Link } from "react-router-dom";
 import RestaurentCard from "./RestaurentCard";
 import Shimmer from "./Shimmer";
+import { updateLoginStatus } from "../../utils/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Body = () => {
   const [searchInputText, setSearchInputText] = useState("");
   const [allRestaurent, setAllRestaurent] = useState([]);
   const [filterRestaurentList, setFilterRestaurentList] = useState([]);
-
+  const userProfile = useSelector((store) => store.user.userProfile);
+  const dispatch = useDispatch();
+  console.log("userProfile", userProfile);
   const filterData = (searchInputText, allRestaurent) => {
     const filteredData = allRestaurent.filter((restaurent) =>
       restaurent.data.name.toLowerCase().includes(searchInputText.toLowerCase())
@@ -24,6 +30,16 @@ const Body = () => {
     setAllRestaurent(data.data.cards[2].data.data.cards);
     setFilterRestaurentList(data?.data?.cards[2]?.data?.data?.cards);
   }
+  useEffect(() => {
+    let unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("user", currentUser);
+      dispatch(updateLoginStatus(currentUser));
+    });
+    // console.log("user logged in", user);
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   useEffect(() => {
     getRestaurentData();
   }, []);
@@ -76,3 +92,4 @@ export default Body;
 // https://www.youtube.com/watch?v=Dbq6yr9XKX8
 // https://blog.logrocket.com/user-authentication-firebase-react-apps/
 // https://console.firebase.google.com/project/food-order-signin/authentication/settings
+// https://www.freecodecamp.org/news/integrate-a-payment-gateway-in-next-js-and-react-with-razorpay-and-tailwindcss/
