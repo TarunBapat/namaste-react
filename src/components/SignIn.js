@@ -23,29 +23,33 @@ const SignIn = () => {
   return (
     <>
       <div className="flex justify-around h-screen w-screen">
-        <div className="flex flex-col items-center p-8 bg-slate-500">
-          <input
-            type="text"
-            className="p-3 mb-3 text-xs"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-mail Address"
-          />
-          <input
-            type="password"
-            className="p-3 mb-3 text-xs"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
+        <form className="mt-8" onSubmit={(e) => e.preventDefault()}>
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-dark bg-white bg-clip-padding border border-solid border-gray rounded transition ease-in-out m-0 focus:text-gray-dark focus:bg-white focus:border-yellow focus:outline-none"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail Address"
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="password"
+              className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-dark bg-white bg-clip-padding border border-solid border-gray rounded transition ease-in-out m-0 focus:text-gray-dark focus:bg-white focus:border-yellow focus:outline-none"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+          </div>
           <button
-            className="p-2 mb-3 text-white bg-black"
+            className="inline-block px-7 py-3 bg-yellow text-blue-dark font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-yellow hover:shadow-lg focus:bg-yellow focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-900 active:shadow-lg transition duration-150 ease-in-out w-full bg-green-500"
             onClick={() => logInWithEmailAndPassword(email, password)}
           >
             Login
           </button>
           <button
-            className="login__btn login__google"
+            className="inline-block px-7 py-3 bg-yellow-500 text-blue-dark font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-yellow hover:shadow-lg focus:bg-yellow focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow active:shadow-lg transition duration-150 ease-in-out w-full "
             onClick={signInWithGoogle}
           >
             Login with Google
@@ -57,7 +61,7 @@ const SignIn = () => {
           <div>
             Don't have an account? <Link to="/register">Register</Link> now.
           </div>
-        </div>
+        </form>
       </div>
     </>
   );
